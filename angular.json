@@ -58,9 +58,12 @@
               "projects/integration/src/assets"
             ],
             "styles": [
+              "node_modules/dialog-polyfill/dialog-polyfill.css",
               "projects/integration/src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/dialog-polyfill/dialog-polyfill.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

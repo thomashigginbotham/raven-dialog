@@ -2,16 +2,18 @@
 dialog {
   box-sizing: border-box;
   position: absolute;
-  top: var(--dialog-margin, 2rem);
+  top: 50%;
   right: inherit;
-  bottom: var(--dialog-margin, 2rem);
+  bottom: inherit;
   left: calc(50% - var(--dialog-margin, 2rem));
   opacity: var(--dialog-opacity-in, 0);
-  transform: translate(-50%, 0) var(--dialog-transform-in, scale(.9));
+  transform: translate(-50%, -50%) var(--dialog-transform-in, scale(.9));
   margin: auto var(--dialog-margin, 2rem);
   padding: 0;
+  width: fit-content;
   min-width: var(--dialog-min-width, 20rem);
   max-width: var(--dialog-max-width, 40rem);
+  height: fit-content;
   max-height: calc(100vh - var(--dialog-margin, 2rem) * 2);
   border: var(--dialog-border, 0);
   border-radius: var(--dialog-border-radius, .25rem);
@@ -22,24 +24,26 @@ dialog {
 
 .dialog-state-visible {
   opacity: var(--dialog-opacity, 1);
-  transform: translate(-50%, 0) var(--dialog-transform, scale(1));
+  transform: translate(-50%, -50%) var(--dialog-transform, scale(1));
   box-shadow: var(--dialog-box-shadow, 0 0 7rem rgba(0, 0, 0, .4));
 }
 
 .dialog-state-hidden {
   opacity: var(--dialog-opacity-out, 0);
-  transform: translate(-50%, 0) var(--dialog-transform-out, scale(.9));
+  transform: translate(-50%, -50%) var(--dialog-transform-out, scale(.9));
   box-shadow: var(--dialog-box-shadow-out, 0 0 0 rgba(0, 0, 0, 0.6));
   transition: var(--dialog-transition-out, transform .2s ease-in, opacity .2s ease-in, box-shadow .2s ease-in);
 }
 
-dialog::backdrop {
+dialog::backdrop,
+:host >>> dialog + .backdrop {
   opacity: 0;
   background: var(--dialog-backdrop-background, rgba(0, 0, 0, .1));
   transition: opacity .2s ease-in-out;
 }
 
-.dialog-state-visible::backdrop {
+.dialog-state-visible::backdrop,
+:host >>> .dialog-state-visible + .backdrop {
   opacity: 1;
 }
 
@@ -55,6 +59,7 @@ dialog::backdrop {
 
 .dialog-header__heading {
   margin: 0;
+  transform: translateY(.125em); /* Accounts for font descenders */
 }
 
 .dialog-header__close {

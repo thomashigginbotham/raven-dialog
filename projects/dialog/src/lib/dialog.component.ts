@@ -68,6 +68,11 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Check for dialog polyfill and register dialogs
+    // https://www.npmjs.com/package/dialog-polyfill
+    if ((<any>window).dialogPolyfill) {
+      (<any>window).dialogPolyfill.registerDialog(this.dialog.nativeElement);
+    }
   }
 
   /**
