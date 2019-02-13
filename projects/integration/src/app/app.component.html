@@ -1,1 +1,29 @@
-<raven-dialog></raven-dialog>
+<h1>Raven Dialog</h1>
+
+<p>Use the buttons below to open/close the dialog box.</p>
+
+<div class="buttons">
+  <button *ngIf="!isOpen" type="button" class="button"
+          (click)="openClick()">Open</button>
+  <button *ngIf="!isOpen" type="button" class="button"
+          (click)="openModalClick()">Open Modal</button>
+  <button *ngIf="isOpen && !isModal" type="button" class="button"
+          (click)="closeClick()">Close</button>
+</div>
+
+<raven-dialog class="sample-dialog"
+              heading="Sample Title"
+              [(open)]="isOpen"
+              [modal]="isModal"
+              (closeEvent)="closeClick()">
+  <div class="dialog-content">
+    <p>The following is sample content for the dialog box.</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero eius repellat laboriosam exercitationem modi corporis harum sequi facilis deleniti eligendi?</p>
+    <p>Deserunt amet nam illum odit tempore at, quibusdam sequi, perspiciatis beatae nostrum hic accusantium tempora rem voluptatibus quae adipisci enim?</p>
+  </div>
+
+  <footer class="dialog-footer">
+    <button type="button" class="button" (click)="closeClick()">OK</button>
+    <button type="button" class="button" (click)="closeClick()">Cancel</button>
+  </footer>
+</raven-dialog>
