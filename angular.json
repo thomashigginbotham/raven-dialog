@@ -62,7 +62,7 @@
               "projects/integration/src/styles.css"
             ],
             "scripts": [
-              "node_modules/dialog-polyfill/dialog-polyfill.js"
+              "node_modules/dialog-polyfill/dist/dialog-polyfill.js"
             ],
             "es5BrowserSupport": true
           },

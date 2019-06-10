@@ -24,7 +24,7 @@ export class DialogComponent implements OnInit {
   @Output()
   openChange: EventEmitter<boolean>;
 
-  @ViewChild('dialog')
+  @ViewChild('dialog', { static: true })
   dialog: ElementRef;
 
   state: string;
